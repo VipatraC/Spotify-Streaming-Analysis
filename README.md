@@ -21,10 +21,7 @@ Danceable songs perform better
 Popular songs follow consistent tempo patterns
 Pop & hip-hop dominate top charts
 
-Tools Used
-
-Python (pandas, matplotlib, seaborn)
-Jupyter Notebook
+Tools Used : Python (pandas, matplotlib, seaborn) ,Jupyter Notebook
 
 💡 Business Impact
 
