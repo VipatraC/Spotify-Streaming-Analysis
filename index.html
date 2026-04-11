@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name — Business Analyst</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #ffffff;
+      --surface:   #f7f7f5;
+      --border:    #e8e8e4;
+      --text:      #1a1a1a;
+      --muted:     #6b6b6b;
+      --accent:    #2563eb;
+      --accent-lt: #eff6ff;
+      --radius:    8px;
+      --max-w:     780px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Layout ── */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: 72px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--muted);
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    /* ── Hero ── */
+    #hero {
+      padding: 96px 0 80px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-lt);
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero-name {
+      font-size: clamp(36px, 6vw, 52px);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 32px;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 500;
+      transition: opacity 0.15s;
+    }
+
+    .hero-cta:hover { opacity: 0.88; text-decoration: none; }
+
+    /* ── Section headings ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 40px;
+    }
+
+    /* ── Projects ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      background: var(--bg);
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+
+    .project-card:hover {
+      border-color: #c8c8c0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    .project-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .project-title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .project-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* ── Project image gallery ── */
+    .project-gallery {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      margin: -28px -28px 20px -28px;
+      padding: 0;
+      border-radius: var(--radius) var(--radius) 0 0;
+      scrollbar-width: none;
+    }
+
+    .project-gallery::-webkit-scrollbar { display: none; }
+
+    .project-gallery img {
+      flex-shrink: 0;
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      scroll-snap-align: start;
+      border-radius: var(--radius) var(--radius) 0 0;
+      display: block;
+    }
+
+    .project-gallery img + img {
+      border-radius: 0;
+    }
+
+    .gallery-hint {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+      margin-bottom: 12px;
+    }
+
+    .gallery-link {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .chip {
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: var(--surface);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .skill-group h3 {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .skill-list li {
+      font-size: 14px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ── Contact ── */
+    #contact .container > p {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 32px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg);
+      transition: border-color 0.15s, box-shadow 0.15s;
+      max-width: 420px;
+    }
+
+    .contact-item:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+      text-decoration: none;
+    }
+
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent-lt);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+    }
+
+    .contact-info strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .contact-info span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .skills-grid   { grid-template-columns: 1fr 1fr; }
+      #hero { padding: 64px 0 56px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="container">
+      <span class="nav-logo">Lilee</span>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-tag">Open to opportunities</div>
+      <h1 class="hero-name">Vipatra Cherdchuwongsanti</h1>
+      <p class="hero-subtitle">
+        Business Analyst &nbsp;·&nbsp; Data-Driven Decision Maker<br/>
+        Turning complex data into clear, actionable insights.
+      </p>
+      <a href="#contact" class="hero-cta">Get in touch →</a>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label">Work</p>
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-gallery">
+            <img src="assets/images/Number%20of%20Songs%20and%20Average%20Popularity%20by%20Year.png" alt="Number of Songs and Average Popularity by Year" />
+            <img src="assets/images/Diverging%20Bar%20Chart%3A%20Audio%20Features%20by%20Popularity.png" alt="Diverging Bar Chart: Audio Features by Popularity" />
+            <img src="assets/images/Correlation%20Heatmap%20of%20Audio%20Features.png" alt="Correlation Heatmap of Audio Features" />
+            <img src="assets/images/Track%20Popularity%20Distribution%20by%20Genre.png" alt="Track Popularity Distribution by Genre" />
+            <img src="assets/images/Distribution%20of%20Songs%20by%20Genre.png" alt="Distribution of Songs by Genre" />
+          </div>
+          <p class="gallery-hint"><a href="charts.html" class="gallery-link">View all charts →</a></p>
+          <p class="project-tag">Music · Streaming Analytics</p>
+          <h3 class="project-title">Spotify Streaming Analysis</h3>
+          <p class="project-desc">
+            This project analyzes Spotify track data to uncover the key factors that influence song popularity. By exploring audio features such as energy, danceability, tempo, and genre, the analysis aims to identify patterns that contribute to streaming success and provide data-driven insights relevant to the music industry.
+          </p>
+          <div class="project-tools">
+            <span class="chip">Python</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Tableau</span>
+            <span class="chip">pandas</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <p class="project-tag">Consulting · Retail</p>
+          <h3 class="project-title">Retail Loyalty & Customer Engagement</h3>
+          <p class="project-desc">
+            Led a consulting engagement to redesign a retail loyalty program, identifying
+            high-value customer segments and recommending targeted engagement strategies
+            that projected a 20% uplift in repeat purchase rate.
+          </p>
+          <div class="project-tools">
+            <span class="chip">Excel</span>
+            <span class="chip">Power BI</span>
+            <span class="chip">Segmentation</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <p class="project-tag">Finance · Risk Modeling</p>
+          <h3 class="project-title">Credit Risk Modeling & Simulation</h3>
+          <p class="project-desc">
+            Built and validated a credit risk model using logistic regression and Monte
+            Carlo simulation to assess default probability, supporting data-driven
+            lending decisions.
+          </p>
+          <div class="project-tools">
+            <span class="chip">Python</span>
+            <span class="chip">scikit-learn</span>
+            <span class="chip">Excel</span>
+            <span class="chip">Monte Carlo</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="container">
+      <p class="section-label">Expertise</p>
+      <h2 class="section-title">Skills & Tools</h2>
+      <div class="skills-grid">
+
+        <div class="skill-group">
+          <h3>Analysis</h3>
+          <ul class="skill-list">
+            <li>Data Analysis</li>
+            <li>Statistical Modeling</li>
+            <li>Root Cause Analysis</li>
+            <li>KPI Definition</li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <h3>Tools</h3>
+          <ul class="skill-list">
+            <li>Power BI / Tableau</li>
+            <li>SQL</li>
+            <li>Excel / Sheets</li>
+            <li>Python (pandas)</li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <h3>Business</h3>
+          <ul class="skill-list">
+            <li>Requirements Gathering</li>
+            <li>Stakeholder Management</li>
+            <li>Process Mapping</li>
+            <li>Gap Analysis</li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <h3>Methodology</h3>
+          <ul class="skill-list">
+            <li>Agile / Scrum</li>
+            <li>BPMN</li>
+            <li>Lean / Six Sigma</li>
+            <li>User Story Writing</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">Let's Connect</h2>
+      <p>Open to new roles, freelance projects, and collaborations. Drop me a message.</p>
+      <div class="contact-links">
+        <a class="contact-item" href="mailto:your@email.com">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-info">
+            <strong>Email</strong>
+            <span>cherdchu@marshall.usc.edu</span>
+          </div>
+        </a>
+        <a class="contact-item" href="www.linkedin.com/in/vipatra-cherdchuwongsanti" target="_blank" rel="noopener">
+          <div class="contact-icon">💼</div>
+          <div class="contact-info">
+            <strong>LinkedIn</strong>
+            <span>linkedin.com/in/yourprofile</span>
+          </div>
+        </a>
+        <a class="contact-item" href="https://github.com/yourusername" target="_blank" rel="noopener">
+          <div class="contact-icon">🐙</div>
+          <div class="contact-info">
+            <strong>GitHub</strong>
+            <span>github.com/yourusername</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      © 2026 Your Name · Business Analyst
+    </div>
+  </footer>
+
+</body>
+</html>

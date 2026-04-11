@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spotify Analytics — Charts</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #ffffff;
+      --surface:   #f7f7f5;
+      --border:    #e8e8e4;
+      --text:      #1a1a1a;
+      --muted:     #6b6b6b;
+      --accent:    #2563eb;
+      --accent-lt: #eff6ff;
+      --radius:    8px;
+      --max-w:     900px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    nav .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      height: 56px;
+    }
+
+    .back-link {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s;
+    }
+
+    .back-link:hover { color: var(--text); }
+
+    .nav-divider {
+      color: var(--border);
+      font-size: 18px;
+    }
+
+    .nav-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* Layout */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    .page-header {
+      padding: 56px 0 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-lt);
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+
+    .page-title {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .page-desc {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 580px;
+    }
+
+    /* Charts */
+    .charts-section {
+      padding: 56px 0;
+    }
+
+    .charts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .chart-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .chart-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: var(--surface);
+    }
+
+    .chart-caption {
+      padding: 20px 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .chart-num {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .chart-caption h2 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .chart-caption p {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 620px;
+    }
+
+    .chart-item--small {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .chart-item--small img {
+      width: 460px;
+      flex-shrink: 0;
+    }
+
+    .chart-item--small .chart-caption {
+      border-top: none;
+      border-left: 1px solid var(--border);
+    }
+
+    @media (max-width: 640px) {
+      .chart-item--small {
+        flex-direction: column;
+      }
+      .chart-item--small img {
+        width: 100%;
+      }
+      .chart-item--small .chart-caption {
+        border-left: none;
+        border-top: 1px solid var(--border);
+      }
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 600px) {
+      .page-header { padding: 40px 0 32px; }
+      .charts-section { padding: 40px 0; }
+      .charts-list { gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="index.html" class="back-link">← Back</a>
+      <span class="nav-divider">/</span>
+      <span class="nav-title">Spotify Analytics</span>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <span class="page-tag">Case Study · Music Analytics</span>
+      <h1 class="page-title">Spotify Streaming Analysis</h1>
+      <p class="page-desc">This project analyzes Spotify track data to uncover the key factors that influence song popularity. By exploring audio features such as energy, danceability, tempo, and genre, the analysis aims to identify patterns that contribute to streaming success and provide data-driven insights relevant to the music industry.</p>
+    </div>
+  </div>
+
+  <section class="charts-section">
+    <div class="container">
+      <div class="charts-list">
+
+        <div class="chart-item chart-item--small">
+          <img src="assets/images/Distribution%20of%20Songs%20by%20Genre.png"
+               alt="Distribution of Songs by Genre" loading="lazy" />
+          <div class="chart-caption">
+            <p class="chart-num">Chart 01</p>
+            <h2>Distribution of Songs by Genre</h2>
+            <p>Breaks down the dataset composition by genre. Confirms that the sample is broadly balanced across EDM, Rap, Pop, R&amp;B, Latin, and Rock — ensuring genre-level findings are not skewed by unequal representation.</p>
+          </div>
+        </div>
+
+        <div class="chart-item">
+          <img src="assets/images/Track%20Popularity%20Distribution%20by%20Genre.png"
+               alt="Track Popularity Distribution by Genre" loading="lazy" />
+          <div class="chart-caption">
+            <p class="chart-num">Chart 02</p>
+            <h2>Track Popularity Distribution by Genre</h2>
+            <p>Displays how popularity scores are distributed across six genres. Reveals whether certain genres (e.g. pop, R&amp;B) consistently produce high-performing tracks, or if popularity varies widely within a genre.</p>
+          </div>
+        </div>
+
+        <div class="chart-item">
+          <img src="assets/images/Number%20of%20Songs%20and%20Average%20Popularity%20by%20Year.png"
+               alt="Number of Songs and Average Popularity by Year" loading="lazy" />
+          <div class="chart-caption">
+            <p class="chart-num">Chart 03</p>
+            <h2>Number of Songs &amp; Average Popularity by Year</h2>
+            <p>Tracks the growth of Spotify's catalog alongside average track popularity over time. Helps identify which release years produced the most-streamed content and whether catalog size correlates with listener engagement.</p>
+          </div>
+        </div>
+
+        <div class="chart-item">
+          <img src="assets/images/Diverging%20Bar%20Chart%3A%20Audio%20Features%20by%20Popularity.png"
+               alt="Diverging Bar Chart: Audio Features by Popularity" loading="lazy" />
+          <div class="chart-caption">
+            <p class="chart-num">Chart 04</p>
+            <h2>Audio Features by Popularity — High vs. Low</h2>
+            <p>Compares the standardized audio profile of high- vs. low-popularity tracks across features like danceability, energy, and instrumentalness. Reveals which sonic characteristics most distinguish a hit from an underperformer.</p>
+          </div>
+        </div>
+
+        <div class="chart-item">
+          <img src="assets/images/Correlation%20Heatmap%20of%20Audio%20Features.png"
+               alt="Correlation Heatmap of Audio Features" loading="lazy" />
+          <div class="chart-caption">
+            <p class="chart-num">Chart 05</p>
+            <h2>Correlation Heatmap of Audio Features</h2>
+            <p>Shows pairwise correlations between all audio features. Highlights which features move together (e.g. energy and loudness) and which are inversely related (e.g. acousticness and energy), helping to avoid redundant variables in predictive modeling.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2026 Vipatra Cherdchuwongsanti · Business Analyst
+    </div>
+  </footer>
+
+</body>
+</html>
