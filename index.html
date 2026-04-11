@@ -3,52 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name — Business Analyst</title>
+  <title>Vipatra — Business Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* ── Reset & Base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #ffffff;
-      --surface:   #f7f7f5;
-      --border:    #e8e8e4;
-      --text:      #1a1a1a;
-      --muted:     #6b6b6b;
-      --accent:    #2563eb;
-      --accent-lt: #eff6ff;
-      --radius:    8px;
-      --max-w:     780px;
+      --bg:        #FFF8F4;   /* warm cream */
+      --white:     #FFFCF9;
+      --dark:      #3B1F15;   /* deep warm brown */
+      --surface:   #F5E8DF;   /* blush beige */
+      --border:    #EAD4C8;   /* dusty rose-tan */
+      --text:      #2E1810;   /* dark brown */
+      --muted:     #9C7B6E;   /* warm taupe */
+      --accent:    #C97085;   /* dusty rose */
+      --accent2:   #E8B4BC;   /* pastel pink */
+      --accent3:   #D4A574;   /* warm caramel */
+      --radius:    12px;
+      --max-w:     1100px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Inter', -apple-system, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
-      font-size: 16px;
+      line-height: 1.65;
+      font-size: 15px;
     }
 
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* ── Layout ── */
-    .container {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    section { padding: 72px 0; }
-    section + section { border-top: 1px solid var(--border); }
+    a { color: inherit; text-decoration: none; }
 
     /* ── Nav ── */
     nav {
       position: sticky;
       top: 0;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(8px);
+      background: rgba(255,248,244,0.92);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
       z-index: 100;
     }
@@ -61,188 +55,291 @@
     }
 
     .nav-logo {
-      font-weight: 600;
-      font-size: 15px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 20px;
       color: var(--text);
-      letter-spacing: -0.3px;
+      letter-spacing: 0.01em;
     }
 
     .nav-links {
       display: flex;
-      gap: 28px;
+      gap: 32px;
       list-style: none;
     }
 
     .nav-links a {
-      font-size: 14px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--muted);
-      transition: color 0.15s;
+      transition: color 0.2s;
     }
 
-    .nav-links a:hover {
-      color: var(--text);
-      text-decoration: none;
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── Layout ── */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 32px;
     }
 
     /* ── Hero ── */
     #hero {
-      padding: 96px 0 80px;
+      background: var(--bg);
+      padding: 110px 0 96px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-tag {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      background: var(--accent-lt);
-      padding: 4px 10px;
-      border-radius: 20px;
-      margin-bottom: 20px;
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -60px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,112,133,0.14) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: 5%;
+      width: 340px; height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,180,188,0.18) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .hero-name {
-      font-size: clamp(36px, 6vw, 52px);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(36px, 5.5vw, 68px);
       font-weight: 700;
-      letter-spacing: -1.5px;
       line-height: 1.1;
+      letter-spacing: -1px;
       color: var(--text);
-      margin-bottom: 16px;
+      margin-bottom: 24px;
+    }
+
+    .hero-preferred {
+      font-style: italic;
+      color: var(--accent);
     }
 
     .hero-subtitle {
-      font-size: 18px;
+      font-size: 16px;
+      font-weight: 400;
       color: var(--muted);
-      max-width: 520px;
-      margin-bottom: 32px;
+      max-width: 460px;
+      margin-bottom: 40px;
+      line-height: 1.8;
     }
 
-    .hero-cta {
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: var(--accent);
       color: #fff;
-      padding: 10px 20px;
-      border-radius: var(--radius);
-      font-size: 14px;
-      font-weight: 500;
-      transition: opacity 0.15s;
+      padding: 12px 26px;
+      border-radius: 40px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.2s;
     }
 
-    .hero-cta:hover { opacity: 0.88; text-decoration: none; }
+    .btn-primary:hover { background: #B05C70; transform: translateY(-1px); }
 
-    /* ── Section headings ── */
-    .section-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
       color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 12px 22px;
+      border-radius: 40px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── Section ── */
+    section { padding: 96px 0; }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
       margin-bottom: 8px;
     }
 
     .section-title {
-      font-size: 26px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 36px;
       font-weight: 700;
       letter-spacing: -0.5px;
-      margin-bottom: 40px;
-    }
-
-    /* ── Projects ── */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .project-card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-      background: var(--bg);
-      transition: box-shadow 0.15s, border-color 0.15s;
-    }
-
-    .project-card:hover {
-      border-color: #c8c8c0;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-    }
-
-    .project-tag {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-
-    .project-title {
-      font-size: 17px;
-      font-weight: 600;
-      margin-bottom: 10px;
       color: var(--text);
     }
 
-    .project-desc {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 16px;
+    /* ── Projects (horizontal) ── */
+    #projects { background: var(--bg); }
+
+    .projects-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      align-items: start;
     }
 
-    .project-tools {
+    .project-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.10);
+    }
+
+    /* Cover */
+    .project-cover {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .project-card:hover .project-cover img {
+      transform: scale(1.04);
+    }
+
+    .project-cover-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(14,14,14,0.55) 0%, transparent 55%);
+    }
+
+    .cover-tag {
+      position: absolute;
+      top: 14px; left: 14px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      background: rgba(14,14,14,0.55);
+      backdrop-filter: blur(6px);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    /* Pattern cover for cards without images */
+    .project-cover--pattern {
+      background: linear-gradient(135deg, #3B1F15 0%, #6B3828 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cover-monogram {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 64px;
+      font-style: italic;
+      color: rgba(255,255,255,0.12);
+      line-height: 1;
+      user-select: none;
+    }
+
+    /* Body */
+    .project-body {
+      padding: 22px 24px 26px;
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .project-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .project-link {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .project-link:hover { color: var(--accent); }
+
+    .project-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .project-chips {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
     }
 
-    /* ── Project image gallery ── */
-    .project-gallery {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      margin: -28px -28px 20px -28px;
-      padding: 0;
-      border-radius: var(--radius) var(--radius) 0 0;
-      scrollbar-width: none;
-    }
-
-    .project-gallery::-webkit-scrollbar { display: none; }
-
-    .project-gallery img {
-      flex-shrink: 0;
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      scroll-snap-align: start;
-      border-radius: var(--radius) var(--radius) 0 0;
-      display: block;
-    }
-
-    .project-gallery img + img {
-      border-radius: 0;
-    }
-
-    .gallery-hint {
-      font-size: 11px;
-      color: var(--muted);
-      text-align: right;
-      margin-bottom: 12px;
-    }
-
-    .gallery-link {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--accent);
-    }
-
     .chip {
-      font-size: 12px;
+      font-size: 11px;
+      font-weight: 500;
       padding: 3px 10px;
       border-radius: 20px;
       background: var(--surface);
@@ -250,90 +347,47 @@
       border: 1px solid var(--border);
     }
 
-    /* ── Skills ── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 16px;
-    }
-
-    .skill-group {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
-    }
-
-    .skill-group h3 {
-      font-size: 13px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .skill-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .skill-list li {
-      font-size: 14px;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .skill-list li::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
-
     /* ── Contact ── */
-    #contact .container > p {
-      font-size: 17px;
-      color: var(--muted);
-      max-width: 480px;
-      margin-bottom: 32px;
+    #contact { background: var(--dark); }
+
+    #contact .section-eyebrow { color: var(--accent2); }
+    #contact .section-title   { color: #FAF0EA; }
+
+    .contact-intro {
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(250,240,234,0.55);
+      max-width: 440px;
+      margin-bottom: 40px;
     }
 
     .contact-links {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
     }
 
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 16px 20px;
-      border: 1px solid var(--border);
+      gap: 16px;
+      padding: 16px 22px;
+      border: 1px solid rgba(255,255,255,0.1);
       border-radius: var(--radius);
-      background: var(--bg);
-      transition: border-color 0.15s, box-shadow 0.15s;
-      max-width: 420px;
+      background: rgba(255,255,255,0.04);
+      max-width: 400px;
+      transition: border-color 0.2s, background 0.2s;
     }
 
     .contact-item:hover {
-      border-color: var(--accent);
-      box-shadow: 0 2px 8px rgba(37,99,235,0.08);
-      text-decoration: none;
+      border-color: rgba(201,112,133,0.5);
+      background: rgba(201,112,133,0.07);
     }
 
     .contact-icon {
-      width: 36px;
-      height: 36px;
-      background: var(--accent-lt);
-      border-radius: 6px;
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -344,29 +398,34 @@
     .contact-info strong {
       display: block;
       font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
+      font-weight: 500;
+      color: #fff;
     }
 
     .contact-info span {
-      font-size: 13px;
-      color: var(--muted);
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
     }
 
     /* ── Footer ── */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 0;
+      background: var(--dark);
+      border-top: 1px solid rgba(250,240,234,0.08);
+      padding: 24px 0;
       text-align: center;
-      font-size: 13px;
-      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.25);
     }
 
     /* ── Responsive ── */
+    @media (max-width: 860px) {
+      .projects-row { grid-template-columns: 1fr; }
+    }
     @media (max-width: 600px) {
-      .projects-grid { grid-template-columns: 1fr; }
-      .skills-grid   { grid-template-columns: 1fr 1fr; }
-      #hero { padding: 64px 0 56px; }
+      #hero { padding: 80px 0 72px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -378,7 +437,6 @@
       <span class="nav-logo">Lilee</span>
       <ul class="nav-links">
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -387,125 +445,97 @@
   <!-- Hero -->
   <section id="hero">
     <div class="container">
-      <div class="hero-tag">Open to opportunities</div>
-      <h1 class="hero-name">Vipatra Cherdchuwongsanti</h1>
+      <h1 class="hero-name">Vipatra <span class="hero-preferred">(Lilee)</span> Cherdchuwongsanti</h1>
       <p class="hero-subtitle">
-        Business Analyst &nbsp;·&nbsp; Data-Driven Decision Maker<br/>
+        Business Analyst · Data-Driven Decision Maker<br/>
         Turning complex data into clear, actionable insights.
       </p>
-      <a href="#contact" class="hero-cta">Get in touch →</a>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Get in touch →</a>
+        <a href="#projects" class="btn-ghost">View projects ↓</a>
+      </div>
     </div>
   </section>
 
   <!-- Projects -->
   <section id="projects">
     <div class="container">
-      <p class="section-label">Work</p>
-      <h2 class="section-title">Featured Projects</h2>
-      <div class="projects-grid">
-
-        <div class="project-card">
-          <div class="project-gallery">
-            <img src="assets/images/Number%20of%20Songs%20and%20Average%20Popularity%20by%20Year.png" alt="Number of Songs and Average Popularity by Year" />
-            <img src="assets/images/Diverging%20Bar%20Chart%3A%20Audio%20Features%20by%20Popularity.png" alt="Diverging Bar Chart: Audio Features by Popularity" />
-            <img src="assets/images/Correlation%20Heatmap%20of%20Audio%20Features.png" alt="Correlation Heatmap of Audio Features" />
-            <img src="assets/images/Track%20Popularity%20Distribution%20by%20Genre.png" alt="Track Popularity Distribution by Genre" />
-            <img src="assets/images/Distribution%20of%20Songs%20by%20Genre.png" alt="Distribution of Songs by Genre" />
-          </div>
-          <p class="gallery-hint"><a href="charts.html" class="gallery-link">View all charts →</a></p>
-          <p class="project-tag">Music · Streaming Analytics</p>
-          <h3 class="project-title">Spotify Streaming Analysis</h3>
-          <p class="project-desc">
-            This project analyzes Spotify track data to uncover the key factors that influence song popularity. By exploring audio features such as energy, danceability, tempo, and genre, the analysis aims to identify patterns that contribute to streaming success and provide data-driven insights relevant to the music industry.
-          </p>
-          <div class="project-tools">
-            <span class="chip">Python</span>
-            <span class="chip">SQL</span>
-            <span class="chip">Tableau</span>
-            <span class="chip">pandas</span>
-          </div>
+      <div class="section-header">
+        <div>
+          <p class="section-eyebrow">Work</p>
+          <h2 class="section-title">Featured Projects</h2>
         </div>
-
-        <div class="project-card">
-          <p class="project-tag">Consulting · Retail</p>
-          <h3 class="project-title">Retail Loyalty & Customer Engagement</h3>
-          <p class="project-desc">
-            Led a consulting engagement to redesign a retail loyalty program, identifying
-            high-value customer segments and recommending targeted engagement strategies
-            that projected a 20% uplift in repeat purchase rate.
-          </p>
-          <div class="project-tools">
-            <span class="chip">Excel</span>
-            <span class="chip">Power BI</span>
-            <span class="chip">Segmentation</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <p class="project-tag">Finance · Risk Modeling</p>
-          <h3 class="project-title">Credit Risk Modeling & Simulation</h3>
-          <p class="project-desc">
-            Built and validated a credit risk model using logistic regression and Monte
-            Carlo simulation to assess default probability, supporting data-driven
-            lending decisions.
-          </p>
-          <div class="project-tools">
-            <span class="chip">Python</span>
-            <span class="chip">scikit-learn</span>
-            <span class="chip">Excel</span>
-            <span class="chip">Monte Carlo</span>
-          </div>
-        </div>
-
       </div>
-    </div>
-  </section>
 
-  <!-- Skills -->
-  <section id="skills">
-    <div class="container">
-      <p class="section-label">Expertise</p>
-      <h2 class="section-title">Skills & Tools</h2>
-      <div class="skills-grid">
+      <div class="projects-row">
 
-        <div class="skill-group">
-          <h3>Analysis</h3>
-          <ul class="skill-list">
-            <li>Data Analysis</li>
-            <li>Statistical Modeling</li>
-            <li>Root Cause Analysis</li>
-            <li>KPI Definition</li>
-          </ul>
+        <!-- Spotify -->
+        <div class="project-card">
+          <div class="project-cover">
+            <img src="assets/images/Distribution%20of%20Songs%20by%20Genre.png"
+                 alt="Spotify Streaming Analysis" />
+            <div class="project-cover-overlay"></div>
+            <span class="cover-tag">Music · Analytics</span>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <p class="project-tag">Spotify · Data Analysis</p>
+              <a href="charts.html" class="project-link">View charts →</a>
+            </div>
+            <h3 class="project-title">Spotify Streaming Analysis</h3>
+            <p class="project-desc">
+              This project analyzes Spotify track data to uncover the key factors that influence song popularity. By exploring audio features such as energy, danceability, tempo, and genre, the analysis aims to identify patterns that contribute to streaming success and provide data-driven insights relevant to the music industry.
+            </p>
+          </div>
         </div>
 
-        <div class="skill-group">
-          <h3>Tools</h3>
-          <ul class="skill-list">
-            <li>Power BI / Tableau</li>
-            <li>SQL</li>
-            <li>Excel / Sheets</li>
-            <li>Python (pandas)</li>
-          </ul>
+        <!-- Retail -->
+        <div class="project-card">
+          <div class="project-cover project-cover--pattern">
+            <span class="cover-monogram">RL</span>
+            <span class="cover-tag">Consulting · Retail</span>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <p class="project-tag">Consulting · Retail</p>
+            </div>
+            <h3 class="project-title">Retail Loyalty & Customer Engagement</h3>
+            <p class="project-desc">
+              Led a consulting engagement to redesign a retail loyalty program, identifying
+              high-value customer segments and recommending targeted engagement strategies
+              that projected a 20% uplift in repeat purchase rate.
+            </p>
+            <div class="project-chips">
+              <span class="chip">Excel</span>
+              <span class="chip">Power BI</span>
+              <span class="chip">Segmentation</span>
+            </div>
+          </div>
         </div>
 
-        <div class="skill-group">
-          <h3>Business</h3>
-          <ul class="skill-list">
-            <li>Requirements Gathering</li>
-            <li>Stakeholder Management</li>
-            <li>Process Mapping</li>
-            <li>Gap Analysis</li>
-          </ul>
-        </div>
-
-        <div class="skill-group">
-          <h3>Methodology</h3>
-          <ul class="skill-list">
-            <li>Agile / Scrum</li>
-            <li>BPMN</li>
-            <li>Lean / Six Sigma</li>
-            <li>User Story Writing</li>
-          </ul>
+        <!-- Credit Risk -->
+        <div class="project-card">
+          <div class="project-cover project-cover--pattern">
+            <span class="cover-monogram">CR</span>
+            <span class="cover-tag">Finance · Risk</span>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <p class="project-tag">Finance · Risk Modeling</p>
+            </div>
+            <h3 class="project-title">Credit Risk Modeling & Simulation</h3>
+            <p class="project-desc">
+              Built and validated a credit risk model using logistic regression and Monte
+              Carlo simulation to assess default probability, supporting data-driven
+              lending decisions.
+            </p>
+            <div class="project-chips">
+              <span class="chip">Python</span>
+              <span class="chip">scikit-learn</span>
+              <span class="chip">Excel</span>
+              <span class="chip">Monte Carlo</span>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -515,29 +545,29 @@
   <!-- Contact -->
   <section id="contact">
     <div class="container">
-      <p class="section-label">Contact</p>
+      <p class="section-eyebrow">Contact</p>
       <h2 class="section-title">Let's Connect</h2>
-      <p>Open to new roles, freelance projects, and collaborations. Drop me a message.</p>
+      <p class="contact-intro">Open to new roles, freelance projects, and collaborations. Drop me a message.</p>
       <div class="contact-links">
-        <a class="contact-item" href="mailto:your@email.com">
+        <a class="contact-item" href="mailto:cherdchu@marshall.usc.edu">
           <div class="contact-icon">✉️</div>
           <div class="contact-info">
             <strong>Email</strong>
             <span>cherdchu@marshall.usc.edu</span>
           </div>
         </a>
-        <a class="contact-item" href="www.linkedin.com/in/vipatra-cherdchuwongsanti" target="_blank" rel="noopener">
+        <a class="contact-item" href="https://www.linkedin.com/in/vipatra-cherdchuwongsanti" target="_blank" rel="noopener">
           <div class="contact-icon">💼</div>
           <div class="contact-info">
             <strong>LinkedIn</strong>
-            <span>linkedin.com/in/yourprofile</span>
+            <span>linkedin.com/in/vipatra-cherdchuwongsanti</span>
           </div>
         </a>
-        <a class="contact-item" href="https://github.com/yourusername" target="_blank" rel="noopener">
+        <a class="contact-item" href="https://github.com/VipatraC" target="_blank" rel="noopener">
           <div class="contact-icon">🐙</div>
           <div class="contact-info">
             <strong>GitHub</strong>
-            <span>github.com/yourusername</span>
+            <span>github.com/VipatraC</span>
           </div>
         </a>
       </div>
@@ -547,7 +577,7 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      © 2026 Your Name · Business Analyst
+      © 2026 Vipatra Cherdchuwongsanti &nbsp;·&nbsp; Business Analyst
     </div>
   </footer>
 

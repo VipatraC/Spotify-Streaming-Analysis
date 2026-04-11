@@ -4,37 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Spotify Analytics — Charts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #ffffff;
-      --surface:   #f7f7f5;
-      --border:    #e8e8e4;
-      --text:      #1a1a1a;
-      --muted:     #6b6b6b;
-      --accent:    #2563eb;
-      --accent-lt: #eff6ff;
-      --radius:    8px;
+      --bg:        #FDFAF5;
+      --surface:   #F3ECE0;
+      --border:    #D8CBAF;
+      --text:      #2B1D0E;
+      --muted:     #7D6650;
+      --accent:    #6B4A2A;
+      --accent-lt: #EFE6D6;
+      --gold:      #B89A6A;
+      --radius:    6px;
       --max-w:     900px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.7;
       font-size: 16px;
     }
+
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
 
     /* Nav */
     nav {
       position: sticky;
       top: 0;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(8px);
+      background: rgba(253,250,245,0.94);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
       z-index: 100;
     }
@@ -87,13 +93,13 @@
 
     .page-tag {
       display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--accent);
-      background: var(--accent-lt);
-      padding: 4px 10px;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 4px 14px;
       border-radius: 20px;
       margin-bottom: 14px;
     }
@@ -142,11 +148,11 @@
     }
 
     .chart-num {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--gold);
       margin-bottom: 4px;
     }
 
