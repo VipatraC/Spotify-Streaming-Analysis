@@ -211,7 +211,98 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
-      align-items: start;
+      align-items: stretch;
+    }
+
+    .project-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      width: fit-content;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .project-cta:hover { background: #B05C70; transform: translateY(-1px); }
+
+    /* ── Pipeline steps ── */
+    .pipeline {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .pipeline-step {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 0 16px;
+      padding-bottom: 20px;
+      position: relative;
+    }
+
+    .pipeline-step:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 32px;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .step-num {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-content { padding-top: 6px; }
+
+    .step-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .step-desc {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .step-img {
+      grid-column: 2;
+      margin-top: 12px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .step-img img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     .project-card {
@@ -220,6 +311,8 @@
       overflow: hidden;
       border: 1px solid var(--border);
       transition: transform 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
     }
 
     .project-card:hover {
@@ -287,6 +380,9 @@
     /* Body */
     .project-body {
       padding: 22px 24px 26px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     .project-meta {
@@ -469,7 +565,7 @@
 
       <div class="projects-row">
 
-        <!-- Spotify -->
+        <!-- 1. Spotify -->
         <div class="project-card">
           <div class="project-cover">
             <img src="assets/images/Distribution%20of%20Songs%20by%20Genre.png"
@@ -478,63 +574,47 @@
             <span class="cover-tag">Music · Analytics</span>
           </div>
           <div class="project-body">
-            <div class="project-meta">
-              <p class="project-tag">Spotify · Data Analysis</p>
-              <a href="charts.html" class="project-link">View charts →</a>
-            </div>
+            <p class="project-tag">Spotify · Data Analysis</p>
             <h3 class="project-title">Spotify Streaming Analysis</h3>
             <p class="project-desc">
               This project analyzes Spotify track data to uncover the key factors that influence song popularity. By exploring audio features such as energy, danceability, tempo, and genre, the analysis aims to identify patterns that contribute to streaming success and provide data-driven insights relevant to the music industry.
             </p>
+            <a href="charts.html" class="project-cta">View charts →</a>
           </div>
         </div>
 
-        <!-- Retail -->
+        <!-- 2. Credit Risk -->
+        <div class="project-card">
+          <div class="project-cover">
+            <img src="assets/images/financial%20pillar.png" alt="Credit Risk — Financial Pillars" />
+            <div class="project-cover-overlay"></div>
+            <span class="cover-tag">Finance · Risk</span>
+          </div>
+          <div class="project-body">
+            <p class="project-tag">Finance · Risk Modeling</p>
+            <h3 class="project-title">Credit Risk Modeling & Simulation</h3>
+            <p class="project-desc">
+              This project builds a credit rating model inspired by how Moody's and S&amp;P assess company risk. Using 3 years of financial statement data (2015–2017), it scores companies across 5 key metrics and assigns ratings from A to CCC — then uses Monte Carlo simulation to estimate how likely each rating group is to default.
+            </p>
+            <a href="credit-risk.html" class="project-cta">View full analysis →</a>
+          </div>
+        </div>
+
+        <!-- 3. Retail -->
         <div class="project-card">
           <div class="project-cover project-cover--pattern">
             <span class="cover-monogram">RL</span>
             <span class="cover-tag">Consulting · Retail</span>
           </div>
           <div class="project-body">
-            <div class="project-meta">
-              <p class="project-tag">Consulting · Retail</p>
-            </div>
+            <p class="project-tag">Consulting · Retail</p>
             <h3 class="project-title">Retail Loyalty & Customer Engagement</h3>
             <p class="project-desc">
               Led a consulting engagement to redesign a retail loyalty program, identifying
               high-value customer segments and recommending targeted engagement strategies
               that projected a 20% uplift in repeat purchase rate.
             </p>
-            <div class="project-chips">
-              <span class="chip">Excel</span>
-              <span class="chip">Power BI</span>
-              <span class="chip">Segmentation</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Credit Risk -->
-        <div class="project-card">
-          <div class="project-cover project-cover--pattern">
-            <span class="cover-monogram">CR</span>
-            <span class="cover-tag">Finance · Risk</span>
-          </div>
-          <div class="project-body">
-            <div class="project-meta">
-              <p class="project-tag">Finance · Risk Modeling</p>
-            </div>
-            <h3 class="project-title">Credit Risk Modeling & Simulation</h3>
-            <p class="project-desc">
-              Built and validated a credit risk model using logistic regression and Monte
-              Carlo simulation to assess default probability, supporting data-driven
-              lending decisions.
-            </p>
-            <div class="project-chips">
-              <span class="chip">Python</span>
-              <span class="chip">scikit-learn</span>
-              <span class="chip">Excel</span>
-              <span class="chip">Monte Carlo</span>
-            </div>
+            <a href="#" class="project-cta">View case study →</a>
           </div>
         </div>
 
